@@ -7,11 +7,13 @@ export const Ground = () => {
         rotation: [-Math.PI/4,0,0], position:[0,0,0]
     }))
 
+    // avoid bluriness
     groundTexture.magFilter = NearestFilter
 
     groundTexture.wrapS = RepeatWrapping
     groundTexture.wrapT = RepeatWrapping
     groundTexture.repeat.set(100,100)
+
     return (
         <mesh ref={ref}>
             <planeBufferGeometry attach='geometry' args={[100,100]} />
