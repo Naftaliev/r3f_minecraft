@@ -14,3 +14,11 @@ const grassTexture = new TextureLoader(grassImg)
 const woodTexture = new TextureLoader(woodImg)
 const glassTexture = new TextureLoader(glassImg)
 const groundTexture = new TextureLoader(grassImg)
+
+export {
+	dirtTexture,
+	grassTexture,
+	glassTexture,
+	woodTexture,
+	logTexture,
+}
