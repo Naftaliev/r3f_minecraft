@@ -4,18 +4,26 @@ import { useRef } from "react"
 import { useFrame } from "@react-three/fiber"
 import { Vector3 } from "three"
 import { useEffect } from "react"
+import { useKeyboard } from "../hooks/useKeyboard"
 
 export const Player = () => {
     const {camera} = useThree()
     const [ref, api] = useSphere(() => ({
         mass: 1,
         type: 'Dynamic',
-        position: [0, 0, 0]
+        position: [0, 2, 0]
     }))
 
     // useRef is used to create a mutable value, that changes without re-render
-    const pos = useRef([0,0,0])
+    const vel = useRef([0,0,0])
+    useEffect(() => {
+        // subscribe method is used to connect two values and update onchange
+        api.velocity.subscribe((v) => vel.current = v)
+    }, [api.velocity])
+ 
 
+    // useRef is used to create a mutable value, that changes without re-render
+    const pos = useRef([0,0,0])
     useEffect(() => {
         // subscribe method is used to connect two values and update onchange
         api.position.subscribe((p) => pos.current = p)
