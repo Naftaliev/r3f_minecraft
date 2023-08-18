@@ -5,6 +5,7 @@ import { useFrame } from "@react-three/fiber"
 import { Vector3 } from "three"
 import { useEffect } from "react"
 import { useKeyboard } from "../hooks/useKeyboard"
+const JUMP_FORCE = 10
 
 export const Player = () => {
     const actions = useKeyboard()
@@ -35,6 +36,11 @@ export const Player = () => {
     // update camera position, literally copies XYZ from player pos
     useFrame(() => {
         camera.position.copy(new Vector3(pos.current[0], pos.current[1], pos.current[2]))
+        
+        if(actions.jump) {
+            api.velocity.set(vel.current[0], JUMP_FORCE, vel.current[2])
+        }
+        
     })
 
     return (
