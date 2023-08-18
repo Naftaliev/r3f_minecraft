@@ -37,7 +37,7 @@ export const Player = () => {
     useFrame(() => {
         camera.position.copy(new Vector3(pos.current[0], pos.current[1], pos.current[2]))
         
-        if(actions.jump) {
+        if(actions.jump && Math.abs(vel.current[1]) < 0.05) {
             api.velocity.set(vel.current[0], JUMP_FORCE, vel.current[2])
         }
         
