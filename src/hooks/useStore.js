@@ -2,28 +2,29 @@ import create from "zustand";
 import { nanoid } from "nanoid";
 
 export const useStore = create((set) => ({
-    texture: 'dirt',
-    cubes: [
+  texture: 'dirt',
+  cubes: [
+    {
+      key: nanoid(),
+      pos: [1, 1, 1],
+      texture: 'glass'
+    }
+  ],
+  // methods for interactions
+  addCube: (x, y, z) => {
+    set((prev) => ({
+      cubes: [
+        ...prev.cubes,
         {
-            key: nanoid(),
-            pos: [1,1,1],
-            texture: 'glass'
+          key: nanoid(),
+          pos: [x, y, z],
+          texture: prev.texture
         }
-    ],
-    // methods for interactions
-    addCube: (x,y,z) => {
-        set((prev) => ({
-            cubes: [
-                ...prev.cubes,
-                {key: nanoid(),
-                pos:[x,y,z],
-                texture: prev.texture  }
-            ]
-        })})
-    },
-    removeCube: () => {},
-    setTexture: () => {},
-    saveWorld: () => {},
-    resetWorld: () => {},
-
-}))
+      ]
+    }));
+  },
+  removeCube: () => {},
+  setTexture: () => {},
+  saveWorld: () => {},
+  resetWorld: () => {}
+}));
