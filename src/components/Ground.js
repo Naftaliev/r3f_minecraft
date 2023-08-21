@@ -8,7 +8,6 @@ export const Ground = () => {
     }))
 
     // avoid bluriness
-    groundTexture.magFilter = NearestFilter
 
     groundTexture.wrapS = RepeatWrapping
     groundTexture.wrapT = RepeatWrapping

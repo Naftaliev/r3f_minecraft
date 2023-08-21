@@ -22,7 +22,7 @@ function App() {
       </Canvas>
       <div className='absolute centered  cursor'>+</div>
     </>
-  );
+  )
 }
 
 export default App;
